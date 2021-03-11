@@ -9,9 +9,87 @@ This repository made for build simple of RabbitMQ with docker.
 * [Docker](https://docs.docker.com/engine/install/ubuntu/)
 * [Docker Compose](https://docs.docker.com/compose/install/)
 
-## Run
+## Quick Start
 ```bash
     docker-compose up -d
+```
+
+## Setup
+**Step 1:** Add node into your `docker-compose.yml`
+```yaml
+version: '3.3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    volumes:
+      - rabbitmq-vol:/var/lib/rabbitmq
+      - rabbitmq-log:/var/log/rabbitmq
+      - ./conf/:/etc/rabbitmq/
+    networks:
+      - rabbitmq-net
+```
+**Step 2:** Add default port in ports
+```yaml
+    ports:
+      - "{YOUR_PORT}:5672"
+      - "{YOUR_PORT}:15672"
+```
+
+**Step 2:** Add default account in environment
+
+You can change default user and password in 'environment' section
+```yaml
+    environment:
+      - RABBITMQ_DEFAULT_USER={YOUR_USERNAME}
+      - RABBITMQ_DEFAULT_PASS={YOUR_PASSWORD}
+```
+**Step 3:** Add the volume description
+```yaml
+volumes:
+  rabbitmq-vol:
+    driver: local
+  rabbitmq-log:
+    driver: local
+```
+**Step 4:** Add the network description
+```yaml
+networks:
+  rabbitmq-net:
+    driver: bridge 
+```
+
+The `docker-compose.yml` will look like this
+```yaml
+version: '3.3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    volumes:
+      - rabbitmq-vol:/var/lib/rabbitmq
+      - rabbitmq-log:/var/log/rabbitmq
+      - ./conf/:/etc/rabbitmq/
+    networks:
+      - rabbitmq-net
+    ports:
+      - "5672:5672"
+      - "15672:15672"      
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=pass
+
+volumes:
+  rabbitmq-vol:
+    driver: local
+  rabbitmq-log:
+    driver: local
+
+networks:
+  rabbitmq-net:
+    driver: bridge
 ```
 
 ## Reference
