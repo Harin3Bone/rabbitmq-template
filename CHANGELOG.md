@@ -2,16 +2,22 @@
 
 ## Appendix
 [1.0.0](#vone) <br>
-[1.1.0](#vonepzeromone)
+[1.1.0](#vonepone) <br>
+[1.1.1](#voneponemone)
 
-<h2 id="vonepzeromone">v1.0.1</h2>
+<h2 id="voneponemone">v1.1.1</h2>
+<img src="https://img.shields.io/badge/FIX-FFE12B?style=flat-square"/>&nbsp;
+
+* Fix order of Step section in `README.md`
+
+<h2 id="vonepone">v1.0.1</h2>
 <img src="https://img.shields.io/badge/NEW-6db33f?style=flat-square"/>&nbsp;
 
 * Add Setup in `README.md`
 
 <img src="https://img.shields.io/badge/UPDATE-2496ED?style=flat-square"/>&nbsp;
 
-* Update sequence of `docker-compose.yml`
+* Update sequence in `docker-compose.yml`
 * Update Quick start in `README.md`
 
 <h2 id="vone">v1.0.0</h2>
