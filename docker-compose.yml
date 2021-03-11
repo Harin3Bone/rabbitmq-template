@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  rabbit:
+    image: rabbitmq:3-management
+    container_name: rabbit
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbit-vol:/var/lib/rabbitmq
+      - rabbit-log:/var/log/rabbitmq
+      - ./conf/:/etc/rabbitmq/
+    networks:
+      - rabbit-net
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=password
+
+volumes:
+  rabbit-vol:
+    driver: local
+  rabbit-log:
+    driver: local
+
+networks:
+  rabbit-net:
+    driver: bridge
