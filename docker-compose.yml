@@ -7,7 +7,6 @@ services:
     volumes:
       - rabbitmq-vol:/var/lib/rabbitmq
       - rabbitmq-log:/var/log/rabbitmq
-      - ./conf/:/etc/rabbitmq/
     networks:
       - rabbitmq-net
     ports:
