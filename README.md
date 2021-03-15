@@ -37,7 +37,7 @@ services:
       - "{YOUR_PORT}:15672"
 ```
 
-**Step 2:** Add default account in environment
+**Step 3:** Add default account in environment
 
 You can change default user and password in 'environment' section
 ```yaml
@@ -45,7 +45,7 @@ You can change default user and password in 'environment' section
       - RABBITMQ_DEFAULT_USER={YOUR_USERNAME}
       - RABBITMQ_DEFAULT_PASS={YOUR_PASSWORD}
 ```
-**Step 3:** Add the volume description
+**Step 4:** Add the volume description
 ```yaml
 volumes:
   rabbitmq-vol:
@@ -53,7 +53,7 @@ volumes:
   rabbitmq-log:
     driver: local
 ```
-**Step 4:** Add the network description
+**Step 5:** Add the network description
 ```yaml
 networks:
   rabbitmq-net:
