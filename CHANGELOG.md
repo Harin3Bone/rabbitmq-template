@@ -4,11 +4,12 @@
 [1.0.0](#vone) <br>
 [1.1.0](#vonepone) <br>
 [1.1.1](#voneponemone) <br>
-[1.2.0](#voneptwo)
+[2.0.0](#vtwo)
 
-<h2 id="voneptwo">v1.2.0</h2>
+<h2 id="vtwo">v2.0.0</h2>
 <img src="https://img.shields.io/badge/NEW-6db33f?style=flat-square"/>&nbsp;
 
+* Add shell script in `quick-start.sh`
 * Add default value in `default.env`
 * Add `.gitignore`
 
