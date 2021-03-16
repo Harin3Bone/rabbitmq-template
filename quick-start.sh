@@ -1,10 +1,13 @@
 #!/bin/bash
 
-echo "Creating RabbitMQ environment"
+echo "Creating RabbitMQ environment..."
 
-cp default.env .env
+SERVER_PORT=5672
+MANAGEMENT_PORT=15672
+DEFAULT_USERNAME=root
+DEFAULT_PASSWORD=password
 
-echo "Starting RabbitMQ server"
+echo "Starting RabbitMQ server..."
 
 docker-compose up -d
 
