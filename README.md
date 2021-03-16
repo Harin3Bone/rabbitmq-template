@@ -14,12 +14,8 @@ This repository made for build simple of RabbitMQ with docker.
     sudo docker-compose up -d
 ```
 
-## Change Default Value
-Copy `default.env` to `.env`
-```bash
-  cp default.env .env
-```
-Then edit the `.env` file to change default value
+## Default Value
+Create `.env` file to define your own value
 | Variable name | Default value | Datatype | Description |
 |:--------------|:--------------|:--------:|------------:|
 | SERVER_PORT | 5672 | number | RabbitMQ port |
@@ -71,6 +67,11 @@ networks:
   rabbitmq-net:
     driver: bridge 
 ```
+**Step 6:** Copy `default.evn` to `.env` for define value
+```bash
+  cp default.env .env
+```
+
 The `docker-compose.yml` will look like this
 ```yaml
 version: '3.3'

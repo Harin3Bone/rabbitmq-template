@@ -9,7 +9,8 @@
 <h2 id="voneptwo">v1.2.0</h2>
 <img src="https://img.shields.io/badge/NEW-6db33f?style=flat-square"/>&nbsp;
 
-* Add another way to declare variable at `.evn`
+* Add default value in `default.env`
+* Add `.gitignore`
 
 <img src="https://img.shields.io/badge/UPDATE-2496ED?style=flat-square"/>&nbsp;
 
