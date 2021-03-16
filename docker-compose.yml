@@ -7,15 +7,14 @@ services:
     volumes:
       - rabbitmq-vol:/var/lib/rabbitmq
       - rabbitmq-log:/var/log/rabbitmq
-      - ./conf/:/etc/rabbitmq/
     networks:
       - rabbitmq-net
     ports:
-      - "5672:5672"
-      - "15672:15672"            
+      - "${SERVER_PORT}:5672"
+      - "${MANAGEMENT_PORT}:15672"            
     environment:
-      - RABBITMQ_DEFAULT_USER=root
-      - RABBITMQ_DEFAULT_PASS=pass
+      - RABBITMQ_DEFAULT_USER=${DEFAULT_USERNAME}
+      - RABBITMQ_DEFAULT_PASS=${DEFAULT_PASSWORD}
 
 volumes:
   rabbitmq-vol:

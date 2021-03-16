@@ -11,8 +11,17 @@ This repository made for build simple of RabbitMQ with docker.
 
 ## Quick Start
 ```bash
-    docker-compose up -d
+    sudo docker-compose up -d
 ```
+
+## Default Value
+Create `.env` file to define your own value
+| Variable name | Default value | Datatype | Description |
+|:--------------|:--------------|:--------:|------------:|
+| SERVER_PORT | 5672 | number | RabbitMQ port |
+| MANAGEMENT_PORT | 15672 | number | Management port |
+| DEFAULT_USERNAME | root | text | Username |
+| DEFAULT_PASSWORD | password | text | Password |
 
 ## Setup
 **Step 1:** Add node into your `docker-compose.yml`
@@ -26,15 +35,14 @@ services:
     volumes:
       - rabbitmq-vol:/var/lib/rabbitmq
       - rabbitmq-log:/var/log/rabbitmq
-      - ./conf/:/etc/rabbitmq/
     networks:
       - rabbitmq-net
 ```
 **Step 2:** Add default port in ports
 ```yaml
     ports:
-      - "{YOUR_PORT}:5672"
-      - "{YOUR_PORT}:15672"
+      - "${SERVER_PORT}:5672"
+      - "${MANAGEMENT_PORT}:15672"
 ```
 
 **Step 3:** Add default account in environment
@@ -42,8 +50,8 @@ services:
 You can change default user and password in 'environment' section
 ```yaml
     environment:
-      - RABBITMQ_DEFAULT_USER={YOUR_USERNAME}
-      - RABBITMQ_DEFAULT_PASS={YOUR_PASSWORD}
+      - RABBITMQ_DEFAULT_USER=${DEFAULT_USERNAME}
+      - RABBITMQ_DEFAULT_PASS=${DEFAULT_PASSWORD}
 ```
 **Step 4:** Add the volume description
 ```yaml
@@ -59,6 +67,10 @@ networks:
   rabbitmq-net:
     driver: bridge 
 ```
+**Step 6:** Copy `default.evn` to `.env` for define value
+```bash
+  cp default.env .env
+```
 
 The `docker-compose.yml` will look like this
 ```yaml
@@ -71,15 +83,14 @@ services:
     volumes:
       - rabbitmq-vol:/var/lib/rabbitmq
       - rabbitmq-log:/var/log/rabbitmq
-      - ./conf/:/etc/rabbitmq/
     networks:
       - rabbitmq-net
     ports:
-      - "5672:5672"
-      - "15672:15672"      
+      - "${SERVER_PORT}:5672"
+      - "${MANAGEMENT_PORT}:15672"            
     environment:
-      - RABBITMQ_DEFAULT_USER=root
-      - RABBITMQ_DEFAULT_PASS=pass
+      - RABBITMQ_DEFAULT_USER=${DEFAULT_USERNAME}
+      - RABBITMQ_DEFAULT_PASS=${DEFAULT_PASSWORD}
 
 volumes:
   rabbitmq-vol:
