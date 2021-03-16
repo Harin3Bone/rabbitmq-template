@@ -11,7 +11,7 @@ This repository made for build simple of RabbitMQ with docker.
 
 ## Quick Start
 ```bash
-    time ./quick-start.sh
+  time ./quick-start.sh
 ```
 
 ## Default Value
