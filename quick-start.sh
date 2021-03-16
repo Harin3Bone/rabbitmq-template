@@ -2,10 +2,7 @@
 
 echo "Creating RabbitMQ environment..."
 
-SERVER_PORT=5672
-MANAGEMENT_PORT=15672
-DEFAULT_USERNAME="root"
-DEFAULT_PASSWORD="password"
+cp default.env .env
 
 echo "Starting RabbitMQ server..."
 
@@ -18,6 +15,8 @@ do
     echo "."
     sleep 1
 done
+
+rm .env
 
 echo "RabbitMQ management running http://localhost:15672"
 sleep 1 
