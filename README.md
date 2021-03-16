@@ -11,7 +11,7 @@ This repository made for build simple of RabbitMQ with docker.
 
 ## Quick Start
 ```bash
-    sudo docker-compose up -d
+    time ./quick-start.sh
 ```
 
 ## Default Value
