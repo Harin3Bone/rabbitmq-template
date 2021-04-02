@@ -4,8 +4,14 @@
 [1.0.0](#vone) <br>
 [1.1.0](#vonepone) <br>
 [1.1.1](#voneponemone) <br>
-[2.0.0](#vtwo)
-[2.1.0](#vtwopone)
+[2.0.0](#vtwo) <br>
+[2.1.0](#vtwopone) <br>
+[2.1.1](#btwoponeoone) <br>
+
+<h2 id="vtwopone">v2.1.1</h2>
+<img src="https://img.shields.io/badge/FIX-FFE12B?style=flat-square"/>&nbsp;
+
+* Fix can not use compose down by fix `quick-start.sh`
 
 <h2 id="vtwopone">v2.1.0</h2>
 <img src="https://img.shields.io/badge/UPDATE-2496ED?style=flat-square"/>&nbsp;
