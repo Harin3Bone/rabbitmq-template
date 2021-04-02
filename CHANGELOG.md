@@ -5,6 +5,16 @@
 [1.1.0](#vonepone) <br>
 [1.1.1](#voneponemone) <br>
 [2.0.0](#vtwo)
+[2.1.0](#vtwopone)
+
+<h2 id="vtwopone">v2.1.0</h2>
+<img src="https://img.shields.io/badge/UPDATE-2496ED?style=flat-square"/>&nbsp;
+
+* Update more step in `README.md`
+
+<img src="https://img.shields.io/badge/FIX-FFE12B?style=flat-square"/>&nbsp;
+
+* Fix mistake word in `README.md`
 
 <h2 id="vtwo">v2.0.0</h2>
 <img src="https://img.shields.io/badge/NEW-6db33f?style=flat-square"/>&nbsp;
