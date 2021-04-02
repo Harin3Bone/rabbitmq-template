@@ -11,7 +11,7 @@ This repository made for build simple of RabbitMQ with docker.
 
 ## Quick Start
 ```bash
-  time ./quick-start.sh
+time ./quick-start.sh
 ```
 
 ## Default Value
@@ -67,12 +67,16 @@ networks:
   rabbitmq-net:
     driver: bridge 
 ```
-**Step 6:** Copy `default.evn` to `.env` for define value
+**Step 6:** Copy `default.env` to `.env` for define value
 ```bash
-  cp default.env .env
+cp default.env .env
+```
+By the way you can rename `default.env` to `.env` as well
+```bash
+mv default.env .env
 ```
 
-The `docker-compose.yml` will look like this
+Then `docker-compose.yml` will look like this
 ```yaml
 version: '3.3'
 
@@ -101,6 +105,10 @@ volumes:
 networks:
   rabbitmq-net:
     driver: bridge
+```
+**Step 7:** Start server
+```bash
+docker-compose up -d
 ```
 
 ## Reference
