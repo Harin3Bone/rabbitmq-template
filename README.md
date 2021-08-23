@@ -33,10 +33,10 @@ services:
     image: rabbitmq:3-management
     container_name: rabbitmq
     volumes:
-      - rabbitmq-vol:/var/lib/rabbitmq
-      - rabbitmq-log:/var/log/rabbitmq
+      - vol:/var/lib/rabbitmq
+      - log:/var/log/rabbitmq
     networks:
-      - rabbitmq-net
+      - net
 ```
 **Step 2:** Add default port in ports
 ```yaml
@@ -56,15 +56,15 @@ You can change default user and password in 'environment' section
 **Step 4:** Add the volume description
 ```yaml
 volumes:
-  rabbitmq-vol:
+  vol:
     driver: local
-  rabbitmq-log:
+  log:
     driver: local
 ```
 **Step 5:** Add the network description
 ```yaml
 networks:
-  rabbitmq-net:
+  net:
     driver: bridge 
 ```
 **Step 6:** Copy `default.env` to `.env` for define value
@@ -85,10 +85,10 @@ services:
     image: rabbitmq:3-management
     container_name: rabbitmq
     volumes:
-      - rabbitmq-vol:/var/lib/rabbitmq
-      - rabbitmq-log:/var/log/rabbitmq
+      - vol:/var/lib/rabbitmq
+      - log:/var/log/rabbitmq
     networks:
-      - rabbitmq-net
+      - net
     ports:
       - "${SERVER_PORT}:5672"
       - "${MANAGEMENT_PORT}:15672"            
@@ -97,13 +97,13 @@ services:
       - RABBITMQ_DEFAULT_PASS=${DEFAULT_PASSWORD}
 
 volumes:
-  rabbitmq-vol:
+  vol:
     driver: local
-  rabbitmq-log:
+  log:
     driver: local
 
 networks:
-  rabbitmq-net:
+  net:
     driver: bridge
 ```
 **Step 7:** Start server
