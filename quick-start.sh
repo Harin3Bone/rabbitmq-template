@@ -20,8 +20,6 @@ do
     sleep 1
 done
 
-rm .env
-
 echo "RabbitMQ server running http://localhost:5672"
 echo "RabbitMQ management running http://localhost:15672"
 echo "username: root"
