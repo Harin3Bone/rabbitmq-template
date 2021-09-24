@@ -20,29 +20,30 @@ Create `.env` file to define your own value
 |:--------------|:--------------|:--------:|------------:|
 | SERVER_PORT | 5672 | number | RabbitMQ port |
 | MANAGEMENT_PORT | 15672 | number | Management port |
-| DEFAULT_USERNAME | root | text | Username |
-| DEFAULT_PASSWORD | password | text | Password |
+| DEFAULT_USERNAME | root | String | Username |
+| DEFAULT_PASSWORD | password | String | Password |
+| TIMEZONE | "Asia/Bangkok" | String | Service Timezone | 
 
 ## Setup
 **Step 1:** Add node into your `docker-compose.yml`
 ```yaml
-version: '3.3'
+version: '3.8'
 
 services:
   rabbitmq:
-    image: rabbitmq:3-management
+    image: rabbitmq:${RABBIT_VERSION:-3-management}
     container_name: rabbitmq
     volumes:
-      - rabbitmq-vol:/var/lib/rabbitmq
-      - rabbitmq-log:/var/log/rabbitmq
+      - vol:/var/lib/rabbitmq
+      - log:/var/log/rabbitmq
     networks:
-      - rabbitmq-net
+      - net
 ```
 **Step 2:** Add default port in ports
 ```yaml
     ports:
-      - "${SERVER_PORT}:5672"
-      - "${MANAGEMENT_PORT}:15672"
+      - "${SERVER_PORT:-5672}:5672"
+      - "${MANAGEMENT_PORT:-15672}:15672"
 ```
 
 **Step 3:** Add default account in environment
@@ -50,63 +51,58 @@ services:
 You can change default user and password in 'environment' section
 ```yaml
     environment:
-      - RABBITMQ_DEFAULT_USER=${DEFAULT_USERNAME}
-      - RABBITMQ_DEFAULT_PASS=${DEFAULT_PASSWORD}
+      RABBITMQ_DEFAULT_USER: ${DEFAULT_USERNAME:-root}
+      RABBITMQ_DEFAULT_PASS: ${DEFAULT_PASSWORD:-password}
+      TZ: ${TIMEZONE:-"Asia/Bangkok"}
 ```
 **Step 4:** Add the volume description
 ```yaml
 volumes:
-  rabbitmq-vol:
+  vol:
     driver: local
-  rabbitmq-log:
+  log:
     driver: local
 ```
 **Step 5:** Add the network description
 ```yaml
 networks:
-  rabbitmq-net:
+  net:
     driver: bridge 
-```
-**Step 6:** Copy `default.env` to `.env` for define value
-```bash
-cp default.env .env
-```
-By the way you can rename `default.env` to `.env` as well
-```bash
-mv default.env .env
 ```
 
 Then `docker-compose.yml` will look like this
 ```yaml
-version: '3.3'
+version: "3.8"
 
 services:
   rabbitmq:
-    image: rabbitmq:3-management
+    image: rabbitmq:${RABBIT_VERSION:-3-management}
     container_name: rabbitmq
     volumes:
-      - rabbitmq-vol:/var/lib/rabbitmq
-      - rabbitmq-log:/var/log/rabbitmq
+      - vol:/var/lib/rabbitmq
+      - log:/var/log/rabbitmq
     networks:
-      - rabbitmq-net
+      - net
     ports:
-      - "${SERVER_PORT}:5672"
-      - "${MANAGEMENT_PORT}:15672"            
+      - "${SERVER_PORT:-5672}:5672"
+      - "${MANAGEMENT_PORT:-15672}:15672"
     environment:
-      - RABBITMQ_DEFAULT_USER=${DEFAULT_USERNAME}
-      - RABBITMQ_DEFAULT_PASS=${DEFAULT_PASSWORD}
+      RABBITMQ_DEFAULT_USER: ${DEFAULT_USERNAME:-root}
+      RABBITMQ_DEFAULT_PASS: ${DEFAULT_PASSWORD:-password}
+      TZ: ${TIMEZONE:-"Asia/Bangkok"}
 
 volumes:
-  rabbitmq-vol:
+  vol:
     driver: local
-  rabbitmq-log:
+  log:
     driver: local
 
 networks:
-  rabbitmq-net:
+  net:
     driver: bridge
 ```
-**Step 7:** Start server
+
+**Step 6:** Start server
 ```bash
 docker-compose up -d
 ```
