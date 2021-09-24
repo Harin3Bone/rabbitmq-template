@@ -13,8 +13,9 @@ services:
       - "${SERVER_PORT:-5672}:5672"
       - "${MANAGEMENT_PORT:-15672}:15672"
     environment:
-      - RABBITMQ_DEFAULT_USER=${DEFAULT_USERNAME:-root}
-      - RABBITMQ_DEFAULT_PASS=${DEFAULT_PASSWORD:-password}
+      RABBITMQ_DEFAULT_USER: ${DEFAULT_USERNAME:-root}
+      RABBITMQ_DEFAULT_PASS: ${DEFAULT_PASSWORD:-password}
+      TZ: ${TIMEZONE:-"Asia/Bangkok"}
 
 volumes:
   vol:
